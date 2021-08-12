@@ -1,0 +1,27 @@
+<div class="container">
+	<hr>
+    <div class="card" style="width: 18rem;">
+	  <div class="card-body">
+	    <h1 class="card-title">Resultado</h1>
+	    <h3 class="card-text">El resultado  es  {{resultado}}</h3>
+	  </div>
+   </div>
+<form [formGroup]="myGroup">
+	<div class="form-group">
+		<label for="fecha">Fecha</label>
+		 <input type="date" id="fecha" name="fecha" max="{{fechaHoy}}" formControlName="fecha" (keyup)="getConvertir()"  class="form-control"  required [(ngModel)]="convertidor.fecha">
+	 </div>  
+	 <div class="form-group">
+		<label for="cantidad">Cantidad  de euros a convertir</label>
+		<input type="number" id="cantidad" name="cantidad"  formControlName="cantidad" (keyup)="getConvertir()"  class="form-control"  required [(ngModel)]="convertidor.cantidad">
+	 </div>
+	 <div class="form-group">
+		<label for="symbol">Moneda</label>
+		<select  id="symbol" formControlName="symbol" [(ngModel)]="convertidor.symbol" (change)="getConvertir()" name="symbol" class="form-control" required >
+		    <option value="seleccione">Seleccionar un valor</option>
+		    <option *ngFor="let monedas of listKeysMoneda" value="{{monedas.value}}">{{monedas.key}}</option>		    		    	
+		</select>
+	   </div>     
+</form>
+    
+</div>
